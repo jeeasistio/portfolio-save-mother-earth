@@ -12,7 +12,7 @@ function App() {
         <CssBaseline>
           <Router>
             <Routes>
-              <Route path="/home" element={<SaveMotherEarth />} />
+              <Route path="/" element={<SaveMotherEarth />} />
             </Routes>
           </Router>
         </CssBaseline>
