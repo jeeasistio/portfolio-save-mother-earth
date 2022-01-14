@@ -1,30 +1,37 @@
 import Box from '@mui/material/Box'
-import { SxProps } from '@mui/material/styles'
-import React from 'react'
-import { cssOverlay } from '../../utils/designUtils'
+import { SxProps } from '@mui/system'
+import React, { useState } from 'react'
 import SaveMotherEarthButton from './SaveMotherEarthButton'
+import { AnimatePresence } from 'framer-motion'
+import WhatsHappening from './WhatsHappening'
 
 const sx: SxProps = {
   root: {
     background: 'url(/nature.jpg) no-repeat center',
     backgroundSize: 'cover',
     width: '100vw',
-    height: '100vh'
-  },
-  buttonCtn: {
-    width: '100%',
-    height: '100%',
-    display: 'flex',
-    alignItems: 'flex-end',
-    background: cssOverlay
+    height: '100vh',
+    overflow: 'hidden'
   }
 }
 
 const SaveMotherEarth = () => {
+  const [onScreen, setOnScreen] = useState('save')
+
+  const setOnScreenToWhats = () => setOnScreen('whats')
+
   return (
     <Box sx={sx.root}>
-      <Box sx={sx.buttonCtn}>
-        <SaveMotherEarthButton />
+      <Box sx={sx.innerRoot}>
+        <AnimatePresence>
+          {onScreen === 'save' && (
+            <SaveMotherEarthButton
+              key="save"
+              handleClick={setOnScreenToWhats}
+            />
+          )}
+          {onScreen === 'whats' && <WhatsHappening />}
+        </AnimatePresence>
       </Box>
     </Box>
   )

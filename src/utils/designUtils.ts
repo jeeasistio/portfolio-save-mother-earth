@@ -1,14 +1,19 @@
-export const easeInTransition = {
+export const easeInTransition = (duration = 0.5) => ({
   type: 'tween',
-  duration: 0.5,
+  duration,
   ease: 'easeIn'
-}
+})
 
-export const easeOutTransition = {
+export const easeOutTransition = (duration = 0.5) => ({
   type: 'tween',
-  duration: 0.5,
+  duration,
   ease: 'easeOut'
-}
+})
 
-export const cssOverlay =
+export const gradientOverlay =
   'linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5))'
+
+export const fullOverlay =
+  'linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5))'
+
+export const textShadow = '0px 4px 4px #00000040'

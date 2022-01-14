@@ -3,19 +3,36 @@ import Typography from '@mui/material/Typography'
 import { SxProps } from '@mui/system'
 import { motion, useAnimation } from 'framer-motion'
 import React from 'react'
-import { dividerVar, readVar } from '../../animations/saveMotherEarthVariant'
+import {
+  dividerVar,
+  readVar,
+  buttonVar,
+  backgroundVar
+} from '../../animations/saveMotherEarthVariant'
+import { textShadow } from '../../utils/designUtils'
+import TransitionText from '../utilityComponents/TransitionText'
 
 const sx: SxProps = {
   root: {
+    width: '100vw',
+    height: '100vh',
+    position: 'relative'
+  },
+  buttonCtn: {
     p: 4,
-    maxWidth: 0.5,
+    maxWidth: 0.6,
     textAlign: 'left',
-    color: 'common.white',
     backgroundColor: 'transparent',
     border: 'none',
     cursor: 'pointer',
-    ml: '5%',
-    mb: '5%'
+    position: 'absolute',
+    bottom: '10%',
+    left: '5%',
+    textShadow: textShadow
+  },
+  headingCtn: {
+    display: 'flex',
+    flexWrap: 'wrap'
   },
   divider: {
     backgroundColor: 'common.white',
@@ -30,7 +47,13 @@ const sx: SxProps = {
   }
 }
 
-const SaveMotherEarthButton = () => {
+interface Props {
+  handleClick(): void
+}
+
+const WORDS = ['Save\u00a0', 'Mother\u00a0', 'Earth']
+
+const SaveMotherEarthButton = ({ handleClick }: Props) => {
   const dividerControls = useAnimation()
   const readControls = useAnimation()
 
@@ -47,27 +70,44 @@ const SaveMotherEarthButton = () => {
   return (
     <Box
       sx={sx.root}
-      component={motion.button}
-      onHoverStart={handleHover}
-      onHoverEnd={handleNotHover}
+      component={motion.div}
+      variants={backgroundVar}
+      exit="changeBg"
+      initial="gradientBg"
     >
-      <Typography variant="h3">Save Mother Earth</Typography>
       <Box
-        sx={sx.divider}
-        component={motion.div}
-        layout
-        variants={dividerVar}
-        animate={dividerControls}
-      />
-      <Typography
-        sx={sx.read}
-        component={motion.p}
-        variants={readVar}
-        animate={readControls}
-        initial="hidden"
+        sx={sx.buttonCtn}
+        component={motion.button}
+        onHoverStart={handleHover}
+        onHoverEnd={handleNotHover}
+        onClick={handleClick}
+        variants={buttonVar}
+        exit="fadeUp"
       >
-        Read article
-      </Typography>
+        <Box sx={sx.headingCtn}>
+          {WORDS.map((word, i) => (
+            <TransitionText textProp={word} variant="h2" delay={i} />
+          ))}
+        </Box>
+
+        <Box
+          sx={sx.divider}
+          component={motion.div}
+          layout
+          variants={dividerVar}
+          animate={dividerControls}
+        />
+
+        <Typography
+          sx={sx.read}
+          component={motion.p}
+          variants={readVar}
+          animate={readControls}
+          initial="hidden"
+        >
+          Read article
+        </Typography>
+      </Box>
     </Box>
   )
 }

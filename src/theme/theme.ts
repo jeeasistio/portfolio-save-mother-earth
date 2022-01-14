@@ -24,6 +24,9 @@ let theme = createTheme({
     }
   },
   typography: {
+    allVariants: {
+      color: '#fff'
+    },
     fontSize: 16,
     fontFamily: '"Raleway", "Lato"',
     h1: {

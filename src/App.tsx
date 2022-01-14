@@ -4,6 +4,7 @@ import { ThemeProvider } from '@mui/material/styles'
 import theme from './theme/theme'
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom'
 import SaveMotherEarth from './components/heropage/SaveMotherEarth'
+import Effects from './components/effects/Effects'
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
           <Router>
             <Routes>
               <Route path="/" element={<SaveMotherEarth />} />
+              <Route path="/effects" element={<Effects />} />
             </Routes>
           </Router>
         </CssBaseline>
