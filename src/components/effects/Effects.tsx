@@ -3,7 +3,7 @@ import Grid from '@mui/material/Grid'
 import React, { useState } from 'react'
 import Article from './Article'
 import Nav from './Nav'
-import Clip from './Clip'
+import Clips from './Clips'
 import IArticle from '../../interfaces/Article'
 
 const sx: SxProps = {
@@ -88,7 +88,7 @@ const Effects = () => {
   return (
     <Grid container sx={sx.root}>
       <Grid item sx={sx.clip} xs={4}>
-        <Clip inView={inView} />
+        <Clips inView={inView} articles={ARTICLES} />
       </Grid>
       <Grid item sx={sx.article} xs={4}>
         {ARTICLES.map((art) => (

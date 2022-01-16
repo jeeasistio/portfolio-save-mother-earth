@@ -43,16 +43,14 @@ interface Props extends ViewTriggerer {
 }
 
 const Article = ({ image, title, color, name, handleInView }: Props) => {
-  const viewportEnterHandler = () => {
-    handleInView(name)
-  }
+  const handleEnterOnView = () => handleInView(name)
 
   return (
     <Box
       id={name}
       sx={sx.root}
       component={motion.div}
-      onViewportEnter={viewportEnterHandler}
+      onViewportEnter={handleEnterOnView}
       viewport={{ amount: 'all' }}
     >
       <Box sx={{ ...sx.image, background: `url(${image}) center` }} />
