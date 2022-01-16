@@ -1,6 +1,7 @@
 import Box from '@mui/material/Box'
 import { SxProps } from '@mui/system'
 import React from 'react'
+import { ChangesInView } from '../../interfaces/Article'
 import { fullOverlay } from '../../utils/designUtils'
 
 const sx: SxProps = {
@@ -18,7 +19,9 @@ const sx: SxProps = {
   }
 }
 
-const Clip = () => {
+interface Props extends ChangesInView {}
+
+const Clip = ({ inView }: Props) => {
   return (
     <Box sx={sx.root}>
       <Box sx={sx.overlay} />

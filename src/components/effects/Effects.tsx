@@ -1,30 +1,38 @@
 import { SxProps } from '@mui/system'
 import Grid from '@mui/material/Grid'
-import React from 'react'
+import React, { useState } from 'react'
 import Article from './Article'
 import Nav from './Nav'
 import Clip from './Clip'
 import IArticle from '../../interfaces/Article'
 
 const sx: SxProps = {
-  root: {},
+  root: {
+    scrollSnapType: 'y mandatory',
+    height: '100vh',
+    overflowY: 'scroll',
+    scrollBehavior: 'smooth'
+  },
   clip: {
     backgroundColor: 'rgba(102, 204, 255, 0.5)',
     position: 'sticky',
     top: 0,
-    height: '100vh'
+    height: '100%'
+  },
+  article: {
+    height: '100%'
   },
   nav: {
     backgroundColor: 'rgba(102, 255, 102, 0.5)',
     position: 'sticky',
     top: 0,
-    height: '100vh'
+    height: '100%'
   }
 }
 
 const ARTICLES: IArticle[] = [
   {
-    name: 'save mother earth',
+    name: 'save-mother-earth',
     image: '/nature.jpg',
     clip: '/nature.mp4',
     title: 'Save Mother Earth',
@@ -33,7 +41,7 @@ const ARTICLES: IArticle[] = [
     color: '#1D471D'
   },
   {
-    name: 'ice melting',
+    name: 'ice-melting',
     image: '/ice.jpg',
     clip: '/ice.mp4',
     title: 'Ice Melting',
@@ -51,7 +59,7 @@ const ARTICLES: IArticle[] = [
     color: '#573E2C'
   },
   {
-    name: 'forest burning',
+    name: 'forest-burning',
     image: '/forest_burning.jpg',
     clip: '/forest_burning.mp4',
     title: 'Forest Burning',
@@ -60,7 +68,7 @@ const ARTICLES: IArticle[] = [
     color: '#391717'
   },
   {
-    name: 'crops dying',
+    name: 'crops-dying',
     image: '/crops_dying.jpg',
     clip: '/crops_dying.mp4',
     title: 'Crops Dying',
@@ -71,18 +79,24 @@ const ARTICLES: IArticle[] = [
 ]
 
 const Effects = () => {
+  const [inView, setInView] = useState('save mother earth')
+
+  const handleInView = (articleName: string) => {
+    setInView(articleName)
+  }
+
   return (
     <Grid container sx={sx.root}>
       <Grid item sx={sx.clip} xs={4}>
-        <Clip />
+        <Clip inView={inView} />
       </Grid>
       <Grid item sx={sx.article} xs={4}>
         {ARTICLES.map((art) => (
-          <Article {...art} />
+          <Article {...art} handleInView={handleInView} />
         ))}
       </Grid>
       <Grid item sx={sx.nav} xs={4}>
-        <Nav articles={ARTICLES} />
+        <Nav inView={inView} articles={ARTICLES} />
       </Grid>
     </Grid>
   )

@@ -3,7 +3,13 @@ import Typography from '@mui/material/Typography'
 import { SxProps } from '@mui/system'
 import { motion, useAnimation } from 'framer-motion'
 import React from 'react'
-import { barVar } from '../../animations/barVar'
+import {
+  barVar,
+  activeBarVar,
+  textVar,
+  imageVar
+} from '../../animations/barVariant'
+import { ChangesInView } from '../../interfaces/Article'
 
 const sx: SxProps = {
   root: {
@@ -24,7 +30,6 @@ const sx: SxProps = {
     color: 'grey.400'
   },
   active: {
-    backgroundColor: 'rgb(21, 71, 29)',
     height: '100%',
     display: 'flex',
     flexDirection: 'column',
@@ -52,13 +57,14 @@ const sx: SxProps = {
   }
 }
 
-interface Props {
+interface Props extends ChangesInView {
   isActive?: boolean
   title: string
   summary: string
   index: number
   image: string
   color: string
+  name: string
 }
 
 const Bar = ({
@@ -67,7 +73,9 @@ const Bar = ({
   summary,
   index,
   image,
-  color
+  color,
+  name,
+  inView
 }: Props) => {
   const hoverControls = useAnimation()
 
@@ -77,16 +85,37 @@ const Bar = ({
 
   if (isActive)
     return (
-      <Box sx={sx.active}>
+      <Box
+        sx={{ ...sx.active, backgroundColor: color }}
+        component={motion.div}
+        variants={activeBarVar}
+        initial="initial"
+        animate="animate"
+      >
         <Box sx={sx.title}>
-          <Typography variant="h3" paragraph>
+          <Typography
+            variant="h3"
+            paragraph
+            component={motion.h3}
+            variants={textVar}
+          >
             {title}
           </Typography>
-          <Typography variant="subtitle1" sx={sx.summary}>
+          <Typography
+            variant="subtitle1"
+            sx={sx.summary}
+            component={motion.p}
+            variants={textVar}
+          >
             Sed arcu libero, gravida eu orci sed, fermentum volutpat neque.
           </Typography>
         </Box>
-        <Typography fontWeight="bold" variant="h2">
+        <Typography
+          fontWeight="bold"
+          variant="h2"
+          component={motion.h2}
+          variants={textVar}
+        >
           {`${index}`.padStart(2, '0')}
         </Typography>
       </Box>
@@ -95,10 +124,18 @@ const Bar = ({
   return (
     <Box
       sx={{ ...sx.root, background: `url(${image}) center` }}
-      component={motion.div}
+      component={motion.a}
+      href={`#${name}`}
       onHoverStart={handleHover}
       onHoverEnd={handleNotHover}
     >
+      <Box
+        sx={{ ...sx.imageOverlay, background: color }}
+        component={motion.div}
+        variants={imageVar}
+        initial="initial"
+        animate="animate"
+      />
       <Box
         sx={{
           ...sx.imageOverlay,

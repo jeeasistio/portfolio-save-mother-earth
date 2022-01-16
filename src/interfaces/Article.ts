@@ -7,3 +7,11 @@ export default interface Article {
   summary: string
   color: string
 }
+
+export interface ChangesInView {
+  inView: string
+}
+
+export interface ViewTriggerer {
+  handleInView(articleName: string): void
+}

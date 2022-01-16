@@ -2,11 +2,14 @@ import { SxProps } from '@mui/system'
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import React from 'react'
+import { ViewTriggerer } from '../../interfaces/Article'
+import { motion } from 'framer-motion'
 
 const sx: SxProps = {
   root: {
     width: '100%',
-    height: '100vh'
+    height: '100vh',
+    scrollSnapAlign: 'start'
   },
   image: {
     width: '100%',
@@ -32,15 +35,26 @@ const sx: SxProps = {
   }
 }
 
-interface Props {
+interface Props extends ViewTriggerer {
   image: string
   title: string
   color: string
+  name: string
 }
 
-const Article = ({ image, title, color }: Props) => {
+const Article = ({ image, title, color, name, handleInView }: Props) => {
+  const viewportEnterHandler = () => {
+    handleInView(name)
+  }
+
   return (
-    <Box sx={sx.root}>
+    <Box
+      id={name}
+      sx={sx.root}
+      component={motion.div}
+      onViewportEnter={viewportEnterHandler}
+      viewport={{ amount: 'all' }}
+    >
       <Box sx={{ ...sx.image, background: `url(${image}) center` }} />
       <Box sx={{ ...sx.article, backgroundColor: `${color}` }}>
         <Box sx={sx.title}>
