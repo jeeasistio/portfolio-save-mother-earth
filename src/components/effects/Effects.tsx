@@ -1,20 +1,29 @@
 import { SxProps } from '@mui/system'
 import Grid from '@mui/material/Grid'
+import Box from '@mui/material/Box'
 import React, { useState } from 'react'
 import Article from './Article'
 import Nav from './Nav'
 import Clips from './Clips'
+import WhatCauses from './WhatCauses'
 import IArticle from '../../interfaces/Article'
+import { motion } from 'framer-motion'
+import { fullOverlay } from '../../utils/designUtils'
 
 const sx: SxProps = {
   root: {
     scrollSnapType: 'y mandatory',
     height: '100vh',
+    overflowY: 'scroll'
+  },
+  effects: {
+    scrollSnapAlign: 'start',
+    scrollSnapType: 'y mandatory',
+    scrollBehavior: 'smooth',
     overflowY: 'scroll',
-    scrollBehavior: 'smooth'
+    height: '100vh'
   },
   clip: {
-    backgroundColor: 'rgba(102, 204, 255, 0.5)',
     position: 'sticky',
     top: 0,
     height: '100%'
@@ -23,18 +32,30 @@ const sx: SxProps = {
     height: '100%'
   },
   nav: {
-    backgroundColor: 'rgba(102, 255, 102, 0.5)',
     position: 'sticky',
     top: 0,
     height: '100%'
+  },
+  whatCauses: {
+    scrollSnapAlign: 'start',
+    background: 'url(/images/what_are_the_causes.jpg) center',
+    backgroundSize: 'cover',
+    height: '100vh',
+    position: 'relative'
+  },
+  overlay: {
+    position: 'absolute',
+    height: '100%',
+    width: '100%',
+    background: fullOverlay
   }
 }
 
 const ARTICLES: IArticle[] = [
   {
     name: 'save-mother-earth',
-    image: '/nature.jpg',
-    clip: '/nature.mp4',
+    image: '/images/nature.jpg',
+    clip: '/videos/nature.mp4',
     title: 'Save Mother Earth',
     body: '',
     summary: '',
@@ -42,8 +63,8 @@ const ARTICLES: IArticle[] = [
   },
   {
     name: 'ice-melting',
-    image: '/ice.jpg',
-    clip: '/ice.mp4',
+    image: '/images/ice_melting.jpg',
+    clip: '/videos/ice_melting.mp4',
     title: 'Ice Melting',
     body: '',
     summary: '',
@@ -51,8 +72,8 @@ const ARTICLES: IArticle[] = [
   },
   {
     name: 'drought',
-    image: '/ground_cracked.jpg',
-    clip: '/drought.mp4',
+    image: '/images/drought.jpg',
+    clip: '/videos/drought.mp4',
     title: 'Drought',
     body: '',
     summary: '',
@@ -60,8 +81,8 @@ const ARTICLES: IArticle[] = [
   },
   {
     name: 'forest-burning',
-    image: '/forest_burning.jpg',
-    clip: '/forest_burning.mp4',
+    image: '/images/forest_burning.jpg',
+    clip: '/videos/forest_burning.mp4',
     title: 'Forest Burning',
     body: '',
     summary: '',
@@ -69,8 +90,8 @@ const ARTICLES: IArticle[] = [
   },
   {
     name: 'crops-dying',
-    image: '/crops_dying.jpg',
-    clip: '/crops_dying.mp4',
+    image: '/images/crops_dying.jpg',
+    clip: '/videos/crops_dying.mp4',
     title: 'Crops Dying',
     body: '',
     summary: '',
@@ -80,25 +101,42 @@ const ARTICLES: IArticle[] = [
 
 const Effects = () => {
   const [inView, setInView] = useState('save mother earth')
+  const [whatInView, setWhatInView] = useState(false)
+
+  const handleWhatInView = () => setWhatInView(true)
+  const handleWhatNotInView = () => setWhatInView(false)
 
   const handleInView = (articleName: string) => {
     setInView(articleName)
   }
 
   return (
-    <Grid container sx={sx.root}>
-      <Grid item sx={sx.clip} xs={4}>
-        <Clips inView={inView} articles={ARTICLES} />
+    <Box sx={sx.root}>
+      <Grid container sx={sx.effects}>
+        <Grid item sx={sx.clip} xs={4}>
+          <Clips inView={inView} articles={ARTICLES} />
+        </Grid>
+        <Grid item sx={sx.article} xs={4}>
+          {ARTICLES.map((art) => (
+            <Article {...art} handleInView={handleInView} />
+          ))}
+        </Grid>
+        <Grid item sx={sx.nav} xs={4}>
+          <Nav inView={inView} articles={ARTICLES} />
+        </Grid>
       </Grid>
-      <Grid item sx={sx.article} xs={4}>
-        {ARTICLES.map((art) => (
-          <Article {...art} handleInView={handleInView} />
-        ))}
-      </Grid>
-      <Grid item sx={sx.nav} xs={4}>
-        <Nav inView={inView} articles={ARTICLES} />
-      </Grid>
-    </Grid>
+
+      <Box
+        sx={sx.whatCauses}
+        component={motion.div}
+        onViewportEnter={handleWhatInView}
+        onViewportLeave={handleWhatNotInView}
+        viewport={{ amount: 'all' }}
+      >
+        <Box sx={sx.overlay} />
+        {whatInView && <WhatCauses />}
+      </Box>
+    </Box>
   )
 }
 

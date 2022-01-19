@@ -34,7 +34,7 @@ const WhatsHappening = () => {
         sx={sx.whatsCtn}
         component={motion.div}
         variants={whatsVar}
-        animate="animate"
+        whileInView="animate"
         initial="initial"
         whileHover="hovered"
       >

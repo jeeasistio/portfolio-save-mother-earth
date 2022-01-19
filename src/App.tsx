@@ -5,6 +5,7 @@ import theme from './theme/theme'
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom'
 import SaveMotherEarth from './components/heropage/SaveMotherEarth'
 import Effects from './components/effects/Effects'
+import './theme/index.css'
 
 function App() {
   return (

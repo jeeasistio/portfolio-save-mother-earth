@@ -9,7 +9,16 @@ const sx: SxProps = {
   root: {
     width: '100%',
     height: '100vh',
-    scrollSnapAlign: 'start'
+    scrollSnapAlign: 'start',
+    position: 'relative'
+  },
+  overlay: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '100%',
+    boxShadow: '2px 0 8px -6px #000, inset -2px 0 8px -6px #000'
   },
   image: {
     width: '100%',
@@ -53,6 +62,7 @@ const Article = ({ image, title, color, name, handleInView }: Props) => {
       onViewportEnter={handleEnterOnView}
       viewport={{ amount: 'all' }}
     >
+      <Box sx={sx.overlay} />
       <Box sx={{ ...sx.image, background: `url(${image}) center` }} />
       <Box sx={{ ...sx.article, backgroundColor: `${color}` }}>
         <Box sx={sx.title}>

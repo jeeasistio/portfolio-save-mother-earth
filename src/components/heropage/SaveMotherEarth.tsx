@@ -7,7 +7,7 @@ import WhatsHappening from './WhatsHappening'
 
 const sx: SxProps = {
   root: {
-    background: 'url(/nature.jpg) no-repeat center',
+    background: 'url(/images/nature.jpg) no-repeat center',
     backgroundSize: 'cover',
     width: '100vw',
     height: '100vh',

@@ -7,7 +7,7 @@ import Clip from './Clip'
 
 const sx: SxProps = {
   root: {
-    height: '100%',
+    height: '100vh',
     position: 'relative'
   },
   overlay: {

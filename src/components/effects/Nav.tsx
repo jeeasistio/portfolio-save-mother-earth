@@ -10,7 +10,7 @@ const sx: SxProps = {
   root: {
     display: 'flex',
     flexDirection: 'column',
-    height: '100%'
+    height: '100vh'
   },
   bar: { flexGrow: 1 }
 }
