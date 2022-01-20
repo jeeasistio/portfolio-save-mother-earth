@@ -14,7 +14,8 @@ const sx: SxProps = {
     position: 'relative',
     display: 'flex',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    background: fullOverlay
   },
   whatsCtn: {
     textShadow: textShadow,
@@ -28,19 +29,26 @@ const WORDS = ['What\u00a0', 'are\u00a0the\u00a0', 'Causes?']
 
 const WhatCauses = () => {
   return (
-    <Box sx={sx.root} component={Link} to="/effects">
-      <Box
-        sx={sx.whatsCtn}
-        component={motion.div}
-        variants={whatsVar}
-        whileInView="animate"
-        initial="initial"
-        whileHover="hovered"
-      >
-        {WORDS.map((word, i) => (
-          <TransitionText textProp={word} variant="h1" delay={i} />
-        ))}
-      </Box>
+    <Box
+      sx={sx.root}
+      component={motion.div}
+      variants={whatsVar}
+      whileInView="animate"
+      initial="initial"
+      exit="initial"
+    >
+      <Link to="/causes">
+        <Box sx={sx.whatsCtn} component={motion.div} variants={whatsVar}>
+          {WORDS.map((word, i) => (
+            <TransitionText
+              textProp={word}
+              variant="h1"
+              delay={i}
+              textStyle={{ fontWeight: 'medium' }}
+            />
+          ))}
+        </Box>
+      </Link>
     </Box>
   )
 }

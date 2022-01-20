@@ -40,7 +40,7 @@ const sx: SxProps = {
   par: {
     lineHeight: 1.7,
     mb: 3,
-    color: 'grey.400'
+    color: 'grey.300'
   }
 }
 

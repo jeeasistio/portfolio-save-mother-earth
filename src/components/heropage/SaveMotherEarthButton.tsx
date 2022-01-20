@@ -43,7 +43,8 @@ const sx: SxProps = {
     borderRadius: 2
   },
   read: {
-    color: 'grey.500'
+    color: 'grey.400',
+    fontWeight: 'bold'
   }
 }
 
@@ -86,7 +87,12 @@ const SaveMotherEarthButton = ({ handleClick }: Props) => {
       >
         <Box sx={sx.headingCtn}>
           {WORDS.map((word, i) => (
-            <TransitionText textProp={word} variant="h2" delay={i} />
+            <TransitionText
+              textProp={word}
+              variant="h2"
+              delay={i}
+              textStyle={{ fontWeight: 'medium' }}
+            />
           ))}
         </Box>
 

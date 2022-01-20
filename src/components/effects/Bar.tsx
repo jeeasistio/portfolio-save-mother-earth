@@ -27,7 +27,7 @@ const sx: SxProps = {
     color: 'transparent'
   },
   summary: {
-    color: 'grey.400'
+    color: 'grey.300'
   },
   active: {
     height: '100%',

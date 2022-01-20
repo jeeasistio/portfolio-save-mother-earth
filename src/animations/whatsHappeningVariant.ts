@@ -7,9 +7,6 @@ export const whatsVar: Variants = {
   },
   animate: {
     opacity: 1,
-    transition: easeInTransition(1)
-  },
-  hovered: {
-    cursor: 'pointer'
+    transition: easeInTransition()
   }
 }

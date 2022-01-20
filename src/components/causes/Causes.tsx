@@ -2,12 +2,12 @@ import { SxProps } from '@mui/system'
 import Grid from '@mui/material/Grid'
 import Box from '@mui/material/Box'
 import React, { useState } from 'react'
-import Article from './Article'
-import Nav from './Nav'
-import Clips from './Clips'
-import WhatCauses from './WhatCauses'
 import IArticle from '../../interfaces/Article'
 import { motion, AnimatePresence } from 'framer-motion'
+import Article from '../effects/Article'
+import Nav from '../effects/Nav'
+import Clips from '../effects/Clips'
+import HowCanWeHelp from './HowCanWeHelp'
 
 const sx: SxProps = {
   root: {
@@ -37,7 +37,7 @@ const sx: SxProps = {
   },
   whatCauses: {
     scrollSnapAlign: 'start',
-    background: 'url(/images/what_are_the_causes.jpg) center',
+    background: 'url(/images/how_can_we_help.jpg) center',
     backgroundSize: 'cover',
     height: '100vh',
     position: 'relative'
@@ -51,53 +51,44 @@ const sx: SxProps = {
 
 const ARTICLES: IArticle[] = [
   {
-    name: 'save-mother-earth',
-    image: '/images/nature.jpg',
-    clip: '/videos/nature.mp4',
-    title: 'Save Mother Earth',
+    name: 'fossil-fuel',
+    image: '/images/fossil_fuel.jpg',
+    clip: '/videos/fossil_fuel.mp4',
+    title: 'Fossil Fuel',
     body: '',
     summary: '',
-    color: '#1D471D'
+    color: '#3B4145'
   },
   {
-    name: 'ice-melting',
-    image: '/images/ice_melting.jpg',
-    clip: '/videos/ice_melting.mp4',
-    title: 'Ice Melting',
+    name: 'livestock-farming',
+    image: '/images/livestock_farming.jpg',
+    clip: '/videos/livestock_farming.mp4',
+    title: 'Livestock Farming',
     body: '',
     summary: '',
-    color: '#4E88B2'
+    color: '#876840'
   },
   {
-    name: 'drought',
-    image: '/images/drought.jpg',
-    clip: '/videos/drought.mp4',
-    title: 'Drought',
+    name: 'deforestation',
+    image: '/images/deforestation.jpg',
+    clip: '/videos/deforestation.mp4',
+    title: 'Deforestation',
     body: '',
     summary: '',
-    color: '#573E2C'
+    color: '#3B261C'
   },
   {
-    name: 'wildfires',
-    image: '/images/wildfires.jpg',
-    clip: '/videos/wildfires.mp4',
-    title: 'Wildfires',
+    name: 'manufacturing-goods',
+    image: '/images/manufacturing_goods.jpg',
+    clip: '/videos/manufacturing_goods.mp4',
+    title: 'Manufacturing Goods',
     body: '',
     summary: '',
-    color: '#391717'
-  },
-  {
-    name: 'crops-dying',
-    image: '/images/crops_dying.jpg',
-    clip: '/videos/crops_dying.mp4',
-    title: 'Crops Dying',
-    body: '',
-    summary: '',
-    color: '#888144'
+    color: '#3B4145'
   }
 ]
 
-const Effects = () => {
+const Causes = () => {
   const [inView, setInView] = useState('save mother earth')
   const [whatInView, setWhatInView] = useState(false)
 
@@ -131,10 +122,10 @@ const Effects = () => {
         onViewportLeave={handleWhatNotInView}
         viewport={{ amount: 'all' }}
       >
-        <AnimatePresence>{whatInView && <WhatCauses />}</AnimatePresence>
+        <AnimatePresence>{whatInView && <HowCanWeHelp />}</AnimatePresence>
       </Box>
     </Box>
   )
 }
 
-export default Effects
+export default Causes

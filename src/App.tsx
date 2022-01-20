@@ -6,6 +6,8 @@ import { Route, BrowserRouter as Router, Routes } from 'react-router-dom'
 import SaveMotherEarth from './components/heropage/SaveMotherEarth'
 import Effects from './components/effects/Effects'
 import './theme/index.css'
+import Causes from './components/causes/Causes'
+import Solutions from './components/solutions/Solutions'
 
 function App() {
   return (
@@ -16,6 +18,8 @@ function App() {
             <Routes>
               <Route path="/" element={<SaveMotherEarth />} />
               <Route path="/effects" element={<Effects />} />
+              <Route path="/causes" element={<Causes />} />
+              <Route path="/solutions" element={<Solutions />} />
             </Routes>
           </Router>
         </CssBaseline>

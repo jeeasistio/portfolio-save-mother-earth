@@ -1,7 +1,7 @@
 export default interface Article {
   name: string
   image: string
-  clip: string
+  clip?: string
   title: string
   body: string
   summary: string

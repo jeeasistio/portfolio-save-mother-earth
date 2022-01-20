@@ -25,30 +25,32 @@ const sx: SxProps = {
   }
 }
 
-const WORDS = ["What's\u00a0", 'Happening\u00a0', 'and\u00a0Why?']
+const WORDS = ['How\u00a0Can\u00a0', 'We\u00a0Help?']
 
-const WhatsHappening = () => {
+const WhatCauses = () => {
   return (
-    <Box sx={sx.root} component={Link} to="/effects">
-      <Box
-        sx={sx.whatsCtn}
-        component={motion.div}
-        variants={whatsVar}
-        whileInView="animate"
-        initial="initial"
-        exit="initial"
-      >
-        {WORDS.map((word, i) => (
-          <TransitionText
-            textProp={word}
-            variant="h1"
-            delay={i}
-            textStyle={{ fontWeight: 'medium' }}
-          />
-        ))}
-      </Box>
+    <Box
+      sx={sx.root}
+      component={motion.div}
+      variants={whatsVar}
+      whileInView="animate"
+      initial="initial"
+      exit="initial"
+    >
+      <Link to="/solutions">
+        <Box sx={sx.whatsCtn} component={motion.div} variants={whatsVar}>
+          {WORDS.map((word, i) => (
+            <TransitionText
+              textProp={word}
+              variant="h1"
+              delay={i}
+              textStyle={{ fontWeight: 'medium' }}
+            />
+          ))}
+        </Box>
+      </Link>
     </Box>
   )
 }
 
-export default WhatsHappening
+export default WhatCauses
