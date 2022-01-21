@@ -15,7 +15,7 @@ const sx: SxProps = {
   hoverOverlay: {
     position: 'absolute',
     width: '100%',
-    height: '150%',
+    height: '120%',
     top: 0,
     left: 0,
     display: 'flex',
@@ -77,7 +77,7 @@ const SolutionCard = ({ name, image, title, color, summary, index }: Props) => {
       <Box
         sx={{
           ...sx.hoverOverlay,
-          background: `linear-gradient(${color}1A 0%, ${color} 30%)`
+          backgroundColor: color
         }}
         component={motion.div}
         variants={hoverVar}

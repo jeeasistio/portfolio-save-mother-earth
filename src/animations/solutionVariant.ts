@@ -7,7 +7,7 @@ export const hoverVar: Variants = {
     transition: easeInTransition()
   },
   show: {
-    y: '-33%',
+    y: '-15%',
     transition: easeOutTransition()
   }
 }

@@ -8,6 +8,7 @@ import Clips from './Clips'
 import WhatCauses from './WhatCauses'
 import IArticle from '../../interfaces/Article'
 import { motion, AnimatePresence } from 'framer-motion'
+import NavUtils from '../utilityComponents/Nav'
 
 const sx: SxProps = {
   root: {
@@ -109,31 +110,34 @@ const Effects = () => {
   }
 
   return (
-    <Box sx={sx.root}>
-      <Grid container sx={sx.effects}>
-        <Grid item sx={sx.clip} xs={4}>
-          <Clips inView={inView} articles={ARTICLES} />
+    <>
+      <NavUtils />
+      <Box sx={sx.root}>
+        <Grid container sx={sx.effects}>
+          <Grid item sx={sx.clip} xs={4}>
+            <Clips inView={inView} articles={ARTICLES} />
+          </Grid>
+          <Grid item sx={sx.article} xs={4}>
+            {ARTICLES.map((art) => (
+              <Article {...art} handleInView={handleInView} />
+            ))}
+          </Grid>
+          <Grid item sx={sx.nav} xs={4}>
+            <Nav inView={inView} articles={ARTICLES} />
+          </Grid>
         </Grid>
-        <Grid item sx={sx.article} xs={4}>
-          {ARTICLES.map((art) => (
-            <Article {...art} handleInView={handleInView} />
-          ))}
-        </Grid>
-        <Grid item sx={sx.nav} xs={4}>
-          <Nav inView={inView} articles={ARTICLES} />
-        </Grid>
-      </Grid>
 
-      <Box
-        sx={sx.whatCauses}
-        component={motion.div}
-        onViewportEnter={handleWhatInView}
-        onViewportLeave={handleWhatNotInView}
-        viewport={{ amount: 'all' }}
-      >
-        <AnimatePresence>{whatInView && <WhatCauses />}</AnimatePresence>
+        <Box
+          sx={sx.whatCauses}
+          component={motion.div}
+          onViewportEnter={handleWhatInView}
+          onViewportLeave={handleWhatNotInView}
+          viewport={{ amount: 'all' }}
+        >
+          <AnimatePresence>{whatInView && <WhatCauses />}</AnimatePresence>
+        </Box>
       </Box>
-    </Box>
+    </>
   )
 }
 

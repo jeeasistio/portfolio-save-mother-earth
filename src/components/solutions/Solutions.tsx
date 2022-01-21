@@ -1,6 +1,7 @@
 import Grid from '@mui/material/Grid'
 import { SxProps } from '@mui/system'
 import IArticle from '../../interfaces/Article'
+import Nav from '../utilityComponents/Nav'
 import SolutionCard from './SolutionCard'
 
 const ARTICLES: IArticle[] = [
@@ -79,13 +80,16 @@ const sx: SxProps = {
 
 const Solutions = () => {
   return (
-    <Grid container sx={sx.root}>
-      {ARTICLES.map((art, i) => (
-        <Grid item xs={3}>
-          <SolutionCard {...art} index={i + 1} />
-        </Grid>
-      ))}
-    </Grid>
+    <>
+      <Nav />
+      <Grid container sx={sx.root}>
+        {ARTICLES.map((art, i) => (
+          <Grid item xs={3}>
+            <SolutionCard {...art} index={i + 1} />
+          </Grid>
+        ))}
+      </Grid>
+    </>
   )
 }
 
