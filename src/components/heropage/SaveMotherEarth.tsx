@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import SaveMotherEarthButton from './SaveMotherEarthButton'
 import { AnimatePresence } from 'framer-motion'
 import WhatsHappening from './WhatsHappening'
+import TransitionPage from '../utilityComponents/TransitionPage'
 
 const sx: SxProps = {
   root: {
@@ -21,19 +22,21 @@ const SaveMotherEarth = () => {
   const setOnScreenToWhats = () => setOnScreen('whats')
 
   return (
-    <Box sx={sx.root}>
-      <Box sx={sx.innerRoot}>
-        <AnimatePresence>
-          {onScreen === 'save' && (
-            <SaveMotherEarthButton
-              key="save"
-              handleClick={setOnScreenToWhats}
-            />
-          )}
-          {onScreen === 'whats' && <WhatsHappening />}
-        </AnimatePresence>
+    <TransitionPage>
+      <Box sx={sx.root}>
+        <Box sx={sx.innerRoot}>
+          <AnimatePresence>
+            {onScreen === 'save' && (
+              <SaveMotherEarthButton
+                key="save"
+                handleClick={setOnScreenToWhats}
+              />
+            )}
+            {onScreen === 'whats' && <WhatsHappening />}
+          </AnimatePresence>
+        </Box>
       </Box>
-    </Box>
+    </TransitionPage>
   )
 }
 

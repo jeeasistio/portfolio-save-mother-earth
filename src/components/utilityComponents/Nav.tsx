@@ -1,10 +1,10 @@
 import Box from '@mui/material/Box'
-import Typography from '@mui/material/Typography'
 import { SxProps } from '@mui/system'
-import { useCycle } from 'framer-motion'
+import { AnimatePresence, useCycle } from 'framer-motion'
 import React from 'react'
 import NavButton from './NavButton'
 import NavPage from './NavPage'
+import NavTitle from './NavTitle'
 
 const sx: SxProps = {
   root: {
@@ -25,8 +25,8 @@ const Nav = () => {
   return (
     <Box sx={sx.root}>
       <Box sx={sx.innerRoot}>
-        <Typography>EFFECTS</Typography>
-        {isOpen && <NavPage />}
+        <AnimatePresence>{isOpen && <NavPage />}</AnimatePresence>
+        <NavTitle />
         <NavButton handleTap={handleTap} isOpen={isOpen} />
       </Box>
     </Box>

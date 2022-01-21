@@ -4,11 +4,13 @@ import { SxProps } from '@mui/system'
 import { motion, useAnimation } from 'framer-motion'
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { linksVar } from '../../animations/navVariant'
 import { dividerVar } from '../../animations/saveMotherEarthVariant'
 
 const sx: SxProps = {
   root: {
-    my: 5
+    my: 5,
+    overflow: 'hidden'
   },
   link: {
     textTransform: 'uppercase',
@@ -41,6 +43,8 @@ const NavLink = ({ link }: Props) => {
       <Box
         sx={sx.root}
         component={motion.div}
+        variants={linksVar}
+        whileInView="animate"
         onHoverStart={handleHover}
         onHoverEnd={handleNotHover}
       >

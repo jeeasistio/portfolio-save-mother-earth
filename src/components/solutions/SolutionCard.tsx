@@ -3,7 +3,7 @@ import Typography from '@mui/material/Typography'
 import { SxProps } from '@mui/system'
 import { motion, useAnimation } from 'framer-motion'
 import { hoverVar } from '../../animations/solutionVariant'
-import { gradientOverlay } from '../../utils/designUtils'
+import { textShadow } from '../../utils/designUtils'
 
 const sx: SxProps = {
   root: {
@@ -30,13 +30,16 @@ const sx: SxProps = {
     height: '100%',
     top: 0,
     left: 0,
-    background: gradientOverlay,
+    background: 'linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.7))',
     display: 'flex',
     alignItems: 'flex-end',
     p: 4
   },
   summary: {
     color: 'grey.300'
+  },
+  text: {
+    textShadow: textShadow
   }
 }
 
@@ -72,7 +75,9 @@ const SolutionCard = ({ name, image, title, color, summary, index }: Props) => {
       onHoverEnd={handleNotHover}
     >
       <Box sx={sx.imageOverlay}>
-        <Typography variant="h5">{title}</Typography>
+        <Typography sx={sx.text} variant="h5">
+          {title}
+        </Typography>
       </Box>
       <Box
         sx={{

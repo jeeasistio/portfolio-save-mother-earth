@@ -8,7 +8,7 @@ import Article from '../effects/Article'
 import Nav from '../effects/Nav'
 import Clips from '../effects/Clips'
 import HowCanWeHelp from './HowCanWeHelp'
-import NavUtils from '../utilityComponents/Nav'
+import TransitionPage from '../utilityComponents/TransitionPage'
 
 const sx: SxProps = {
   root: {
@@ -101,8 +101,7 @@ const Causes = () => {
   }
 
   return (
-    <>
-      <NavUtils />
+    <TransitionPage>
       <Box sx={sx.root}>
         <Grid container sx={sx.effects}>
           <Grid item sx={sx.clip} xs={4}>
@@ -128,7 +127,7 @@ const Causes = () => {
           <AnimatePresence>{whatInView && <HowCanWeHelp />}</AnimatePresence>
         </Box>
       </Box>
-    </>
+    </TransitionPage>
   )
 }
 

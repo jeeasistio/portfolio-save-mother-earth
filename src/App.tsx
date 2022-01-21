@@ -2,12 +2,10 @@ import React from 'react'
 import CssBaseline from '@mui/material/CssBaseline'
 import { ThemeProvider } from '@mui/material/styles'
 import theme from './theme/theme'
-import { Route, BrowserRouter as Router, Routes } from 'react-router-dom'
-import SaveMotherEarth from './components/heropage/SaveMotherEarth'
-import Effects from './components/effects/Effects'
+import { BrowserRouter as Router } from 'react-router-dom'
 import './theme/index.css'
-import Causes from './components/causes/Causes'
-import Solutions from './components/solutions/Solutions'
+
+import AllRoutes from './AllRoutes'
 
 function App() {
   return (
@@ -15,12 +13,7 @@ function App() {
       <ThemeProvider theme={theme}>
         <CssBaseline>
           <Router>
-            <Routes>
-              <Route path="/" element={<SaveMotherEarth />} />
-              <Route path="/effects" element={<Effects />} />
-              <Route path="/causes" element={<Causes />} />
-              <Route path="/solutions" element={<Solutions />} />
-            </Routes>
+            <AllRoutes />
           </Router>
         </CssBaseline>
       </ThemeProvider>

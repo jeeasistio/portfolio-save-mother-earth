@@ -17,7 +17,8 @@ const sx: SxProps = {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',
-    alignItems: 'center'
+    alignItems: 'center',
+    cursor: 'pointer'
   },
   line1: {
     width: '100%',

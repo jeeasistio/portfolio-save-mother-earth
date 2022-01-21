@@ -1,6 +1,8 @@
 import Box from '@mui/material/Box'
 import { SxProps } from '@mui/system'
+import { motion } from 'framer-motion'
 import React from 'react'
+import { navPageVar } from '../../animations/navVariant'
 import NavLink from './NavLink'
 
 const LINKS = ['effects', 'causes', 'solutions']
@@ -21,7 +23,14 @@ const sx: SxProps = {
 
 const NavPage = () => {
   return (
-    <Box sx={sx.root}>
+    <Box
+      sx={sx.root}
+      component={motion.div}
+      variants={navPageVar}
+      animate="animate"
+      initial="initial"
+      exit="initial"
+    >
       <Box>
         {LINKS.map((link) => (
           <NavLink link={link} />

@@ -8,7 +8,7 @@ import Clips from './Clips'
 import WhatCauses from './WhatCauses'
 import IArticle from '../../interfaces/Article'
 import { motion, AnimatePresence } from 'framer-motion'
-import NavUtils from '../utilityComponents/Nav'
+import TransitionPage from '../utilityComponents/TransitionPage'
 
 const sx: SxProps = {
   root: {
@@ -110,8 +110,7 @@ const Effects = () => {
   }
 
   return (
-    <>
-      <NavUtils />
+    <TransitionPage>
       <Box sx={sx.root}>
         <Grid container sx={sx.effects}>
           <Grid item sx={sx.clip} xs={4}>
@@ -137,7 +136,7 @@ const Effects = () => {
           <AnimatePresence>{whatInView && <WhatCauses />}</AnimatePresence>
         </Box>
       </Box>
-    </>
+    </TransitionPage>
   )
 }
 
