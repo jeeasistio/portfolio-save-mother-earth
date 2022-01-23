@@ -15,7 +15,3 @@ export interface ChangesInView {
 export interface ViewTriggerer {
   handleInView(articleName: string): void
 }
-
-export interface Solution extends Article {
-  images: string[]
-}

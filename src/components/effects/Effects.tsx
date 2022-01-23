@@ -6,9 +6,9 @@ import Article from './Article'
 import Nav from './Nav'
 import Clips from './Clips'
 import WhatCauses from './WhatCauses'
-import IArticle from '../../interfaces/Article'
 import { motion, AnimatePresence } from 'framer-motion'
 import TransitionPage from '../utilityComponents/TransitionPage'
+import { effectsArticles } from '../../utils/articles'
 
 const sx: SxProps = {
   root: {
@@ -50,54 +50,6 @@ const sx: SxProps = {
   }
 }
 
-const ARTICLES: IArticle[] = [
-  {
-    name: 'save-mother-earth',
-    image: '/images/nature.jpg',
-    clip: '/videos/nature.mp4',
-    title: 'Save Mother Earth',
-    body: '',
-    summary: '',
-    color: '#1D471D'
-  },
-  {
-    name: 'ice-melting',
-    image: '/images/ice_melting.jpg',
-    clip: '/videos/ice_melting.mp4',
-    title: 'Ice Melting',
-    body: '',
-    summary: '',
-    color: '#4E88B2'
-  },
-  {
-    name: 'drought',
-    image: '/images/drought.jpg',
-    clip: '/videos/drought.mp4',
-    title: 'Drought',
-    body: '',
-    summary: '',
-    color: '#573E2C'
-  },
-  {
-    name: 'wildfires',
-    image: '/images/wildfires.jpg',
-    clip: '/videos/wildfires.mp4',
-    title: 'Wildfires',
-    body: '',
-    summary: '',
-    color: '#391717'
-  },
-  {
-    name: 'crops-dying',
-    image: '/images/crops_dying.jpg',
-    clip: '/videos/crops_dying.mp4',
-    title: 'Crops Dying',
-    body: '',
-    summary: '',
-    color: '#888144'
-  }
-]
-
 const Effects = () => {
   const [inView, setInView] = useState('save mother earth')
   const [whatInView, setWhatInView] = useState(false)
@@ -114,15 +66,15 @@ const Effects = () => {
       <Box sx={sx.root}>
         <Grid container sx={sx.effects}>
           <Grid item sx={sx.clip} xs={4}>
-            <Clips inView={inView} articles={ARTICLES} />
+            <Clips inView={inView} articles={effectsArticles} />
           </Grid>
           <Grid item sx={sx.article} xs={4}>
-            {ARTICLES.map((art) => (
+            {effectsArticles.map((art) => (
               <Article {...art} handleInView={handleInView} />
             ))}
           </Grid>
           <Grid item sx={sx.nav} xs={4}>
-            <Nav inView={inView} articles={ARTICLES} />
+            <Nav inView={inView} articles={effectsArticles} />
           </Grid>
         </Grid>
 

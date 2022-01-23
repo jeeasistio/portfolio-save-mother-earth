@@ -2,13 +2,13 @@ import { SxProps } from '@mui/system'
 import Grid from '@mui/material/Grid'
 import Box from '@mui/material/Box'
 import React, { useState } from 'react'
-import IArticle from '../../interfaces/Article'
 import { motion, AnimatePresence } from 'framer-motion'
 import Article from '../effects/Article'
 import Nav from '../effects/Nav'
 import Clips from '../effects/Clips'
 import HowCanWeHelp from './HowCanWeHelp'
 import TransitionPage from '../utilityComponents/TransitionPage'
+import { causesArticles } from '../../utils/articles'
 
 const sx: SxProps = {
   root: {
@@ -50,45 +50,6 @@ const sx: SxProps = {
   }
 }
 
-const ARTICLES: IArticle[] = [
-  {
-    name: 'fossil-fuel',
-    image: '/images/fossil_fuel.jpg',
-    clip: '/videos/fossil_fuel.mp4',
-    title: 'Fossil Fuel',
-    body: '',
-    summary: '',
-    color: '#3B4145'
-  },
-  {
-    name: 'livestock-farming',
-    image: '/images/livestock_farming.jpg',
-    clip: '/videos/livestock_farming.mp4',
-    title: 'Livestock Farming',
-    body: '',
-    summary: '',
-    color: '#876840'
-  },
-  {
-    name: 'deforestation',
-    image: '/images/deforestation.jpg',
-    clip: '/videos/deforestation.mp4',
-    title: 'Deforestation',
-    body: '',
-    summary: '',
-    color: '#3B261C'
-  },
-  {
-    name: 'manufacturing-goods',
-    image: '/images/manufacturing_goods.jpg',
-    clip: '/videos/manufacturing_goods.mp4',
-    title: 'Manufacturing Goods',
-    body: '',
-    summary: '',
-    color: '#3B4145'
-  }
-]
-
 const Causes = () => {
   const [inView, setInView] = useState('save mother earth')
   const [whatInView, setWhatInView] = useState(false)
@@ -105,15 +66,15 @@ const Causes = () => {
       <Box sx={sx.root}>
         <Grid container sx={sx.effects}>
           <Grid item sx={sx.clip} xs={4}>
-            <Clips inView={inView} articles={ARTICLES} />
+            <Clips inView={inView} articles={causesArticles} />
           </Grid>
           <Grid item sx={sx.article} xs={4}>
-            {ARTICLES.map((art) => (
+            {causesArticles.map((art) => (
               <Article {...art} handleInView={handleInView} />
             ))}
           </Grid>
           <Grid item sx={sx.nav} xs={4}>
-            <Nav inView={inView} articles={ARTICLES} />
+            <Nav inView={inView} articles={causesArticles} />
           </Grid>
         </Grid>
 

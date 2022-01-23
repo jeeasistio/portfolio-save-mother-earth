@@ -1,11 +1,10 @@
 import Box from '@mui/material/Box'
-import ImageList from '@mui/material/ImageList'
-import ImageListItem from '@mui/material/ImageListItem'
 import Typography from '@mui/material/Typography'
 import { SxProps } from '@mui/system'
 import { motion, useAnimation } from 'framer-motion'
 import React, { useEffect } from 'react'
 import { childrenVar, pageVar } from '../../animations/solutionVariant'
+import ISolution from '../../interfaces/Solution'
 
 const sx: SxProps = {
   root: {
@@ -32,17 +31,18 @@ const sx: SxProps = {
     p: 2
   },
   imageList: {
-    width: '80%',
-    height: '100%'
-  },
-  imageListItem: {
-    overflow: 'hidden'
-  },
-  imageInnerCtn: {
-    overflow: 'hidden'
+    width: '100%',
+    height: '100%',
+    display: 'grid',
+    gridTemplateColumns: 'repeat(12, 1fr)',
+    gridTemplateRows: 'repeat(12, 1fr)',
+    columnGap: 0.5,
+    rowGap: 0.5,
+    p: 4
   },
   textCtn: {
-    width: '50%'
+    width: '50%',
+    p: 4
   },
   title: {
     overflow: 'hidden'
@@ -56,18 +56,11 @@ const sx: SxProps = {
   par: {
     lineHeight: 1.7,
     mb: 3,
-    color: 'grey.300',
-    overflow: 'hidden'
+    color: 'grey.300'
   }
 }
 
-interface Props {
-  name: string
-  title: string
-  images: string[]
-  body: string
-  summary: string
-  color: string
+interface Props extends ISolution {
   isActive: boolean
   handleBack(): void
 }
@@ -106,57 +99,56 @@ const Solution = ({
     >
       <Box sx={sx.innerRoot}>
         <Box sx={sx.imageCtn}>
-          <ImageList sx={sx.imageList}>
+          <Box sx={sx.imageList}>
             {images.map((image) => (
-              <ImageListItem sx={sx.imageListItem}>
-                <Box sx={sx.imageinnerCtn}>
-                  <motion.img
-                    variants={childrenVar}
-                    src={image}
-                    alt={name}
-                    width={'100%'}
-                    height={'100%'}
-                  />
-                </Box>
-              </ImageListItem>
+              <Box
+                sx={{
+                  background: `url(${image.src}) center`,
+                  backgroundSize: 'cover',
+                  gridRow: image.rows,
+                  gridColumn: image.cols
+                }}
+              />
             ))}
-          </ImageList>
+          </Box>
         </Box>
 
         <Box sx={sx.textCtn}>
-          <Box sx={sx.parCtn}>
-            <Typography
-              sx={sx.title}
-              component={motion.h2}
-              variants={childrenVar}
-              variant="h2"
-            >
-              {title}
-            </Typography>
-          </Box>
-          <Box sx={sx.body}>
+          <Box>
             <Box sx={sx.parCtn}>
               <Typography
-                sx={sx.par}
-                component={motion.p}
+                sx={sx.title}
+                component={motion.h2}
                 variants={childrenVar}
+                variant="h2"
               >
-                Sed arcu libero, gravida eu orci sed, fermentum volutpat neque.
-                Fusce quis mauris non massa commodo pharetra. Nullam euismod
-                fringilla nibh quis mattis.
+                {title}
               </Typography>
             </Box>
+            <Box sx={sx.body}>
+              <Box sx={sx.parCtn}>
+                <Typography
+                  sx={sx.par}
+                  component={motion.p}
+                  variants={childrenVar}
+                >
+                  Sed arcu libero, gravida eu orci sed, fermentum volutpat
+                  neque. Fusce quis mauris non massa commodo pharetra. Nullam
+                  euismod fringilla nibh quis mattis.
+                </Typography>
+              </Box>
 
-            <Box sx={sx.parCtn}>
-              <Typography
-                sx={sx.par}
-                component={motion.p}
-                variants={childrenVar}
-              >
-                Phasellus eu felis sapien. Mauris vitae dapibus diam.
-                Pellentesque nec mattis quam, a fermentum sapien. Donec ac
-                tortor neque. Etiam non aliquet elit, eu tempus massa.
-              </Typography>
+              <Box sx={sx.parCtn}>
+                <Typography
+                  sx={sx.par}
+                  component={motion.p}
+                  variants={childrenVar}
+                >
+                  Phasellus eu felis sapien. Mauris vitae dapibus diam.
+                  Pellentesque nec mattis quam, a fermentum sapien. Donec ac
+                  tortor neque. Etiam non aliquet elit, eu tempus massa.
+                </Typography>
+              </Box>
             </Box>
           </Box>
         </Box>
