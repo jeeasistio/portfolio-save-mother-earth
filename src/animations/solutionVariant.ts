@@ -11,3 +11,33 @@ export const hoverVar: Variants = {
     transition: easeOutTransition()
   }
 }
+
+export const pageVar: Variants = {
+  initial: {
+    y: '100%',
+    transition: {
+      ...easeInTransition(),
+      staggerChildren: 0.1,
+      when: 'afterChildren'
+    }
+  },
+  animate: {
+    y: '-15%',
+    transition: {
+      ...easeOutTransition(),
+      staggerChildren: 0.1,
+      when: 'beforeChildren'
+    }
+  }
+}
+
+export const childrenVar: Variants = {
+  initial: {
+    y: '200%',
+    transition: easeInTransition()
+  },
+  animate: {
+    y: '0%',
+    transition: easeOutTransition()
+  }
+}

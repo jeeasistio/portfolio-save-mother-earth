@@ -10,7 +10,11 @@ const sx: SxProps = {
     width: '100%',
     height: '50vh',
     position: 'relative',
-    overflow: 'hidden'
+    overflow: 'hidden',
+    border: 'none',
+    outline: 'inherit',
+    cursor: 'pointer',
+    textAlign: 'left'
   },
   hoverOverlay: {
     position: 'absolute',
@@ -50,9 +54,18 @@ interface Props {
   color: string
   summary: string
   index: number
+  handleActive(name: string): void
 }
 
-const SolutionCard = ({ name, image, title, color, summary, index }: Props) => {
+const SolutionCard = ({
+  name,
+  image,
+  title,
+  color,
+  summary,
+  index,
+  handleActive
+}: Props) => {
   const hoverControls = useAnimation()
 
   const handleHover = () => {
@@ -63,6 +76,10 @@ const SolutionCard = ({ name, image, title, color, summary, index }: Props) => {
     hoverControls.start('hide')
   }
 
+  const handleClick = () => {
+    handleActive(name)
+  }
+
   return (
     <Box
       sx={{
@@ -70,9 +87,10 @@ const SolutionCard = ({ name, image, title, color, summary, index }: Props) => {
         background: `url(${image}) center`,
         backgroundSize: 'cover'
       }}
-      component={motion.div}
+      component={motion.button}
       onHoverStart={handleHover}
       onHoverEnd={handleNotHover}
+      onClick={handleClick}
     >
       <Box sx={sx.imageOverlay}>
         <Typography sx={sx.text} variant="h5">
