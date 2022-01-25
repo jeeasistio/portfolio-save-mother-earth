@@ -1,45 +1,6 @@
 import Article from '../interfaces/Article'
 import Solution from '../interfaces/Solution'
 
-export const causesArticles: Article[] = [
-  {
-    name: 'fossil-fuel',
-    image: '/images/fossil_fuel.jpg',
-    clip: '/videos/fossil_fuel.mp4',
-    title: 'Fossil Fuel',
-    body: '',
-    summary: '',
-    color: '#3B4145'
-  },
-  {
-    name: 'livestock-farming',
-    image: '/images/livestock_farming.jpg',
-    clip: '/videos/livestock_farming.mp4',
-    title: 'Livestock Farming',
-    body: '',
-    summary: '',
-    color: '#876840'
-  },
-  {
-    name: 'deforestation',
-    image: '/images/deforestation.jpg',
-    clip: '/videos/deforestation.mp4',
-    title: 'Deforestation',
-    body: '',
-    summary: '',
-    color: '#3B261C'
-  },
-  {
-    name: 'manufacturing-goods',
-    image: '/images/manufacturing_goods.jpg',
-    clip: '/videos/manufacturing_goods.mp4',
-    title: 'Manufacturing Goods',
-    body: '',
-    summary: '',
-    color: '#3B4145'
-  }
-]
-
 export const effectsArticles: Article[] = [
   {
     name: 'save-mother-earth',
@@ -85,6 +46,45 @@ export const effectsArticles: Article[] = [
     body: '',
     summary: '',
     color: '#888144'
+  }
+]
+
+export const causesArticles: Article[] = [
+  {
+    name: 'fossil-fuel',
+    image: '/images/fossil_fuel.jpg',
+    clip: '/videos/fossil_fuel.mp4',
+    title: 'Fossil Fuel',
+    body: '',
+    summary: '',
+    color: '#3B4145'
+  },
+  {
+    name: 'livestock-farming',
+    image: '/images/livestock_farming.jpg',
+    clip: '/videos/livestock_farming.mp4',
+    title: 'Livestock Farming',
+    body: '',
+    summary: '',
+    color: '#876840'
+  },
+  {
+    name: 'deforestation',
+    image: '/images/deforestation.jpg',
+    clip: '/videos/deforestation.mp4',
+    title: 'Deforestation',
+    body: '',
+    summary: '',
+    color: '#3B261C'
+  },
+  {
+    name: 'manufacturing-goods',
+    image: '/images/manufacturing_goods.jpg',
+    clip: '/videos/manufacturing_goods.mp4',
+    title: 'Manufacturing Goods',
+    body: '',
+    summary: '',
+    color: '#3B4145'
   }
 ]
 
