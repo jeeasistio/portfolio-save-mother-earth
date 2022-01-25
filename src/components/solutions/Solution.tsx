@@ -5,6 +5,7 @@ import { motion, useAnimation } from 'framer-motion'
 import React, { useEffect } from 'react'
 import { childrenVar, pageVar } from '../../animations/solutionVariant'
 import ISolution from '../../interfaces/Solution'
+import SolutionButtons from './SolutionButtons'
 
 const sx: SxProps = {
   root: {
@@ -42,7 +43,10 @@ const sx: SxProps = {
   },
   textCtn: {
     width: '50%',
-    p: 4
+    p: 4,
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between'
   },
   title: {
     overflow: 'hidden'
@@ -62,7 +66,8 @@ const sx: SxProps = {
 
 interface Props extends ISolution {
   isActive: boolean
-  handleBack(): void
+  page: number
+  handleChangePage(page: number): void
 }
 
 const Solution = ({
@@ -73,7 +78,8 @@ const Solution = ({
   summary,
   color,
   isActive,
-  handleBack
+  page,
+  handleChangePage
 }: Props) => {
   const pageControls = useAnimation()
 
@@ -83,6 +89,18 @@ const Solution = ({
 
   const handleHide = () => {
     pageControls.start('initial')
+  }
+
+  const handleNext = () => {
+    handleChangePage(page + 1)
+  }
+
+  const handlePrev = () => {
+    handleChangePage(page - 1)
+  }
+
+  const handleBack = () => {
+    handleChangePage(-1)
   }
 
   useEffect(() => {
@@ -151,9 +169,14 @@ const Solution = ({
               </Box>
             </Box>
           </Box>
+
+          <SolutionButtons
+            handleBack={handleBack}
+            handleNext={handleNext}
+            handlePrev={handlePrev}
+          />
         </Box>
       </Box>
-      <button onClick={handleBack}>back</button>
     </Box>
   )
 }

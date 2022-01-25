@@ -21,8 +21,8 @@ const Solutions = () => {
     setActive(name)
   }
 
-  const handleBack = () => {
-    setActive('')
+  const handleChangePage = (page: number) => {
+    setActive(solutionsArticles[page]?.name || '')
   }
 
   return (
@@ -33,11 +33,12 @@ const Solutions = () => {
             <SolutionCard {...art} index={i + 1} handleActive={handleActive} />
           </Grid>
         ))}
-        {solutionsArticles.map((art) => (
+        {solutionsArticles.map((art, index) => (
           <Solution
             {...art}
+            page={index}
             isActive={active === art.name}
-            handleBack={handleBack}
+            handleChangePage={handleChangePage}
           />
         ))}
       </Grid>

@@ -38,7 +38,12 @@ const WhatCauses = () => {
       exit="initial"
     >
       <Link to="/solutions">
-        <Box sx={sx.whatsCtn} component={motion.div} variants={whatsVar}>
+        <Box
+          sx={sx.whatsCtn}
+          component={motion.div}
+          variants={whatsVar}
+          whileHover="hover"
+        >
           {WORDS.map((word, i) => (
             <TransitionText
               textProp={word}

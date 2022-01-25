@@ -36,6 +36,7 @@ const WhatsHappening = () => {
         variants={whatsVar}
         whileInView="animate"
         initial="initial"
+        whileHover="hover"
         exit="initial"
       >
         {WORDS.map((word, i) => (

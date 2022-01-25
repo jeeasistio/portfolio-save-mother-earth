@@ -36,7 +36,7 @@ const sx: SxProps = {
   },
   divider: {
     backgroundColor: 'common.white',
-    width: 0.5,
+    width: '50%',
     height: 3,
     mt: 2,
     mb: 1,
