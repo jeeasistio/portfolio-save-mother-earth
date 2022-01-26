@@ -8,7 +8,7 @@ import { textShadow } from '../../utils/designUtils'
 const sx: SxProps = {
   root: {
     width: '100%',
-    height: '50vh',
+    height: { xs: '25vh', sm: '50vh' },
     position: 'relative',
     overflow: 'hidden',
     border: 'none',

@@ -26,7 +26,8 @@ const sx: SxProps = {
   clip: {
     position: 'sticky',
     top: 0,
-    height: '100%'
+    height: '100%',
+    display: { xs: 'none', md: 'block' }
   },
   article: {
     height: '100%'
@@ -34,7 +35,8 @@ const sx: SxProps = {
   nav: {
     position: 'sticky',
     top: 0,
-    height: '100%'
+    height: '100%',
+    display: { xs: 'none', md: 'block' }
   },
   whatCauses: {
     scrollSnapAlign: 'start',
@@ -68,7 +70,7 @@ const Causes = () => {
           <Grid item sx={sx.clip} xs={4}>
             <Clips inView={inView} articles={causesArticles} />
           </Grid>
-          <Grid item sx={sx.article} xs={4}>
+          <Grid item sx={sx.article} xs={12} md={4}>
             {causesArticles.map((art) => (
               <Article {...art} handleInView={handleInView} />
             ))}
@@ -83,7 +85,7 @@ const Causes = () => {
           component={motion.div}
           onViewportEnter={handleWhatInView}
           onViewportLeave={handleWhatNotInView}
-          viewport={{ amount: 'all' }}
+          viewport={{ margin: '-50%' }}
         >
           <AnimatePresence>{whatInView && <HowCanWeHelp />}</AnimatePresence>
         </Box>

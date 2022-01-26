@@ -26,7 +26,7 @@ const sx: SxProps = {
   },
   imageCtn: {
     width: '50%',
-    display: 'flex',
+    display: { xs: 'none', md: 'flex' },
     justifyContent: 'center',
     alignItems: 'center',
     p: 2
@@ -42,7 +42,7 @@ const sx: SxProps = {
     p: 4
   },
   textCtn: {
-    width: '50%',
+    width: { xs: '100%', md: '50%' },
     p: 4,
     display: 'flex',
     flexDirection: 'column',

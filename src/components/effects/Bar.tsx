@@ -107,7 +107,7 @@ const Bar = ({
             component={motion.p}
             variants={textVar}
           >
-            Sed arcu libero, gravida eu orci sed, fermentum volutpat neque.
+            {summary}
           </Typography>
         </Box>
         <Typography

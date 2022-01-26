@@ -10,7 +10,9 @@ const sx: SxProps = {
     width: '100%',
     height: '100vh',
     scrollSnapAlign: 'start',
-    position: 'relative'
+    position: 'relative',
+    display: 'flex',
+    flexDirection: { xs: 'column', sm: 'row', md: 'column' }
   },
   overlay: {
     position: 'absolute',
@@ -22,14 +24,14 @@ const sx: SxProps = {
   },
   image: {
     width: '100%',
-    height: '50%',
+    height: { xs: '50%', sm: '100%', md: '50%' },
     backgroundSize: 'cover'
   },
   article: {
     py: 2,
     px: 4,
     width: '100%',
-    height: '50%'
+    height: '100%'
   },
   body: {
     p: 2
@@ -49,10 +51,13 @@ interface Props extends ViewTriggerer {
   title: string
   color: string
   name: string
+  body: string
 }
 
-const Article = ({ image, title, color, name, handleInView }: Props) => {
+const Article = ({ image, title, color, name, body, handleInView }: Props) => {
   const handleEnterOnView = () => handleInView(name)
+  const par1 = body.split('/')[0]
+  const par2 = body.split('/')[1]
 
   return (
     <Box
@@ -69,17 +74,9 @@ const Article = ({ image, title, color, name, handleInView }: Props) => {
           <Typography variant="h4">{title}</Typography>
         </Box>
         <Box sx={sx.body}>
-          <Typography sx={sx.par}>
-            Sed arcu libero, gravida eu orci sed, fermentum volutpat neque.
-            Fusce quis mauris non massa commodo pharetra. Nullam euismod
-            fringilla nibh quis mattis.
-          </Typography>
+          <Typography sx={sx.par}>{par1}</Typography>
 
-          <Typography sx={sx.par}>
-            Phasellus eu felis sapien. Mauris vitae dapibus diam. Pellentesque
-            nec mattis quam, a fermentum sapien. Donec ac tortor neque. Etiam
-            non aliquet elit, eu tempus massa.
-          </Typography>
+          <Typography sx={sx.par}>{par2}</Typography>
         </Box>
       </Box>
     </Box>

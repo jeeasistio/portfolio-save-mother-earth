@@ -29,7 +29,7 @@ const Solutions = () => {
     <TransitionPage>
       <Grid container sx={sx.root}>
         {solutionsArticles.map((art, i) => (
-          <Grid item xs={3}>
+          <Grid item xs={6} sm={3}>
             <SolutionCard {...art} index={i + 1} handleActive={handleActive} />
           </Grid>
         ))}
