@@ -16,8 +16,8 @@ export const effectsArticles: Article[] = [
     image: '/images/ice_melting.jpg',
     clip: '/videos/ice_melting.mp4',
     title: 'Ice Melting',
-    body: 'Ice acts like a protective cover over the Earth. These ices reflects excess heat back into space to keep the planet warm. Due to the rapid increasing of heat in the Earth, these ices also rapidly melts which causes many things like the rise of sea levels./As ice and glaciers melts, ocean currents will continue to disrupt weather. It can also change where and when fishes spawn as the water temperature changes. Many wildlife that lives on the Arctic are also losing their homes.',
-    summary: 'Ice are melting, stop global warming.',
+    body: 'Ice acts like a protective cover over the Earth. These ices reflects excess heat back into space to keep the planet warm. Due to the rapid increasing of heat in the Earth, these ices also rapidly melts which causes many things like the rise of sea levels./As ices and glaciers melts, ocean currents will continue to disrupt weather. It can also change where and when fishes spawn as the water temperature changes. Many wildlife that lives on the Arctic are also losing their homes.',
+    summary: 'Ices are melting, stop global warming.',
     color: '#4E88B2'
   },
   {
