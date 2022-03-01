@@ -150,9 +150,7 @@ const Solution = ({
                   component={motion.p}
                   variants={childrenVar}
                 >
-                  Sed arcu libero, gravida eu orci sed, fermentum volutpat
-                  neque. Fusce quis mauris non massa commodo pharetra. Nullam
-                  euismod fringilla nibh quis mattis.
+                  {body.split('/')[0]}
                 </Typography>
               </Box>
 
@@ -162,9 +160,7 @@ const Solution = ({
                   component={motion.p}
                   variants={childrenVar}
                 >
-                  Phasellus eu felis sapien. Mauris vitae dapibus diam.
-                  Pellentesque nec mattis quam, a fermentum sapien. Donec ac
-                  tortor neque. Etiam non aliquet elit, eu tempus massa.
+                  {body.split('/')[1]}
                 </Typography>
               </Box>
             </Box>
