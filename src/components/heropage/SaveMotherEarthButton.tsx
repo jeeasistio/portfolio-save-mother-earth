@@ -19,8 +19,7 @@ const sx: SxProps = {
     position: 'relative'
   },
   buttonCtn: {
-    p: 4,
-    maxWidth: 0.6,
+    minWidth: 300,
     textAlign: 'left',
     backgroundColor: 'transparent',
     border: 'none',

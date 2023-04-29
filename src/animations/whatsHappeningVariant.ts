@@ -1,5 +1,5 @@
 import { Variants } from 'framer-motion'
-import { easeInTransition, textShadowHovered } from '../utils/designUtils'
+import { easeInTransition } from '../utils/designUtils'
 
 export const whatsVar: Variants = {
   initial: {
@@ -8,9 +8,5 @@ export const whatsVar: Variants = {
   animate: {
     opacity: 1,
     transition: easeInTransition()
-  },
-  hover: {
-    y: -5,
-    textShadow: textShadowHovered
   }
 }

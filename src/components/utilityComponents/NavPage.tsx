@@ -17,7 +17,7 @@ const sx: SxProps = {
     display: 'flex',
     alignItems: 'flex-end',
     backgroundColor: '#1D471D',
-    p: 6
+    px: 1
   }
 }
 

@@ -1,9 +1,9 @@
 import React from 'react'
-import Causes from './components/causes/Causes'
+import Causes from './components/cause&effects/Causes'
 import Solutions from './components/solutions/Solutions'
 import { AnimatePresence } from 'framer-motion'
 import SaveMotherEarth from './components/heropage/SaveMotherEarth'
-import Effects from './components/effects/Effects'
+import Effects from './components/cause&effects/Effects'
 import { Route, Routes, useLocation } from 'react-router-dom'
 
 const AllRoutes = () => {

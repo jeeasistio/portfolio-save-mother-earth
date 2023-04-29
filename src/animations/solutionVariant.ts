@@ -7,7 +7,7 @@ export const hoverVar: Variants = {
     transition: easeInTransition()
   },
   show: {
-    y: '-15%',
+    y: '0%',
     transition: easeOutTransition()
   }
 }
@@ -22,7 +22,7 @@ export const pageVar: Variants = {
     }
   },
   animate: {
-    y: '-15%',
+    y: '0%',
     transition: {
       ...easeOutTransition(),
       staggerChildren: 0.1,

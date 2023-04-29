@@ -6,6 +6,7 @@ import { whatsVar } from '../../animations/whatsHappeningVariant'
 import { fullOverlay, textShadow } from '../../utils/designUtils'
 import TransitionText from '../utilityComponents/TransitionText'
 import { Link } from 'react-router-dom'
+import ClickAnywhere from '../utilityComponents/ClickAnywhere'
 
 const sx: SxProps = {
   root: {
@@ -29,15 +30,15 @@ const WORDS = ['How\u00a0Can\u00a0', 'We\u00a0Help?']
 
 const WhatCauses = () => {
   return (
-    <Box
-      sx={sx.root}
-      component={motion.div}
-      variants={whatsVar}
-      whileInView="animate"
-      initial="initial"
-      exit="initial"
-    >
-      <Link to="/solutions">
+    <Link to="/solutions">
+      <Box
+        sx={sx.root}
+        component={motion.div}
+        variants={whatsVar}
+        whileInView="animate"
+        initial="initial"
+        exit="initial"
+      >
         <Box
           sx={sx.whatsCtn}
           component={motion.div}
@@ -49,12 +50,13 @@ const WhatCauses = () => {
               textProp={word}
               variant="h1"
               delay={i}
-              textStyle={{ fontWeight: 'medium' }}
+              textStyle={{ fontWeight: 'medium', textAlign: 'center' }}
             />
           ))}
+          <ClickAnywhere />
         </Box>
-      </Link>
-    </Box>
+      </Box>
+    </Link>
   )
 }
 

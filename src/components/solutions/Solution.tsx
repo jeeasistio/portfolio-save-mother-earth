@@ -12,14 +12,12 @@ const sx: SxProps = {
     position: 'absolute',
     top: 0,
     left: 0,
-    width: '100vw',
-    height: '120vh',
+    width: '100svw',
+    height: '100vh',
     display: 'flex',
-    alignItems: 'flex-end',
-    py: 4
+    pt: 4
   },
   innerRoot: {
-    height: '80%',
     width: '100%',
     display: 'flex',
     flexDirection: 'row'
@@ -52,7 +50,9 @@ const sx: SxProps = {
     overflow: 'hidden'
   },
   body: {
-    p: 2
+    mt: 2,
+    maxHeight: { xs: '50vh', md: 'auto' },
+    overflow: 'scroll'
   },
   parCtn: {
     overflow: 'hidden'

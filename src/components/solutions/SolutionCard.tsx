@@ -8,7 +8,7 @@ import { textShadow } from '../../utils/designUtils'
 const sx: SxProps = {
   root: {
     width: '100%',
-    height: { xs: '25vh', sm: '50vh' },
+    height: { xs: '25vh', md: '50vh' },
     position: 'relative',
     overflow: 'hidden',
     border: 'none',
@@ -19,10 +19,10 @@ const sx: SxProps = {
   hoverOverlay: {
     position: 'absolute',
     width: '100%',
-    height: '120%',
+    height: '100%',
     top: 0,
     left: 0,
-    display: 'flex',
+    display: { xs: 'none', md: 'flex' },
     alignItems: 'flex-end'
   },
   hoverCtn: {
@@ -37,7 +37,7 @@ const sx: SxProps = {
     background: 'linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.7))',
     display: 'flex',
     alignItems: 'flex-end',
-    p: 4
+    p: { xs: 1, sm: 2, md: 4 }
   },
   summary: {
     color: 'grey.300'

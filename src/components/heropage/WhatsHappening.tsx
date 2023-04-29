@@ -6,6 +6,7 @@ import { whatsVar } from '../../animations/whatsHappeningVariant'
 import { fullOverlay, textShadow } from '../../utils/designUtils'
 import TransitionText from '../utilityComponents/TransitionText'
 import { Link } from 'react-router-dom'
+import ClickAnywhere from '../utilityComponents/ClickAnywhere'
 
 const sx: SxProps = {
   root: {
@@ -36,7 +37,6 @@ const WhatsHappening = () => {
         variants={whatsVar}
         whileInView="animate"
         initial="initial"
-        whileHover="hover"
         exit="initial"
       >
         {WORDS.map((word, i) => (
@@ -44,9 +44,11 @@ const WhatsHappening = () => {
             textProp={word}
             variant="h1"
             delay={i}
-            textStyle={{ fontWeight: 'medium' }}
+            textStyle={{ fontWeight: 'medium', textAlign: 'center' }}
           />
         ))}
+
+        <ClickAnywhere />
       </Box>
     </Box>
   )

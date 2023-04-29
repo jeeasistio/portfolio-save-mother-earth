@@ -17,5 +17,3 @@ export const fullOverlay =
   'linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5))'
 
 export const textShadow = '0px 4px 4px #00000040'
-
-export const textShadowHovered = '0px 8px 8px #00000040'
